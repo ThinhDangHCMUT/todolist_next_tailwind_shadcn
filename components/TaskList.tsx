@@ -4,7 +4,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Modal } from "@/components/Modal";
 import { useAppDispatch } from "@/hooks";
 import { deleteTask, updateTask } from "@/redux/todoSlice";
-
 import { AiFillDelete } from "react-icons/ai";
 
 export function TaskList({ taskList }: { taskList: TaskState[] }) {

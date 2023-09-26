@@ -64,10 +64,6 @@ export const todoSlice = createSlice({
     clearAllTasks: (state) => {
       state.taskList = [];
     }
-    
-    // getTaskById: (state, action: PayloadAction<{ id: string }>) => {
-    //   state.taskList.find((item) => item.id === action.payload.id);
-    // }
   },
 });
 

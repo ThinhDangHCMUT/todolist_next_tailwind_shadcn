@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/Modal";
 import { TaskList } from "@/components/TaskList";
+import { Empty } from "@/components/Empty";
 import { useAppSelector } from "@/hooks";
 import { useAppDispatch } from "@/hooks";
 import {
@@ -30,18 +31,28 @@ export default function Home() {
     <div className="w-[600px] mx-auto flex flex-col justify-center items-center">
       <h1 className="my-6 font-bold text-2xl">To do list</h1>
       <Modal type="add-task" />
-      <TaskList taskList={taskList} />
-      {!flag ? (
-        <Button variant="link" className="mr-auto" onClick={handleChooseAll}>
-          Choose all tasks
-        </Button>
+      {taskList.length > 0 ? (
+        <>
+          <TaskList taskList={taskList} />
+          {!flag ? (
+            <Button
+              variant="link"
+              className="mr-auto"
+              onClick={handleChooseAll}
+            >
+              Choose all tasks
+            </Button>
+          ) : (
+            <div>
+              <Button variant="link" onClick={handleChooseAll}>
+                Remove choose all tasks
+              </Button>
+              <Button onClick={handleClealAllTask}>DELETE</Button>
+            </div>
+          )}
+        </>
       ) : (
-        <div>
-          <Button variant="link" onClick={handleChooseAll}>
-            Remove choose all tasks
-          </Button>
-          <Button onClick={handleClealAllTask}>DELETE</Button>
-        </div>
+        <Empty />
       )}
     </div>
   );
